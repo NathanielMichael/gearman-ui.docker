@@ -16,7 +16,7 @@ COPY build/php.ini /usr/local/etc/php/
 RUN apt-get update && apt-get install -y unzip curl git
 
 # Install Gearman UI from source on github
-RUN curl -L https://github.com/gaspaio/gearmanui/archive/master.zip -o /tmp/gearmanui.zip \
+RUN curl -L https://github.com/martinbutt/gearmanui/archive/master.zip -o /tmp/gearmanui.zip \
 	&& unzip -uo /tmp/gearmanui.zip -d /tmp/gearmanui \
 	&& mv /tmp/gearmanui/gearmanui-master /gearmanui \
 	&& rm -Rf /tmp/gearmanui.zip /tmp/gearmanui \
@@ -29,4 +29,3 @@ COPY build/gearmanui.yml /gearmanui/app/config/
 # Install Gearman UI PHP Dependencies with Composer
 WORKDIR /gearmanui
 RUN composer install
-
